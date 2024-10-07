@@ -42,3 +42,41 @@ h1 {
   font-size: 1rem;
   color: #555;
 }
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.page-item {
+  margin: 0 5px;
+}
+
+.page-link {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  color: #007bff;
+  cursor: pointer;
+  background-color: #fff;
+  transition: background-color 0.2s;
+}
+
+.page-link:hover {
+  background-color: #f0f0f0;
+}
+li.page-item{
+  display: block;
+  background-color: #007bff;
+}
+.page-item.active .page-link {
+  background-color: #28a745; /* New active background color (green) */
+  color: #fff; /* Text color for active page */
+  border-color: #28a745; /* Border color for active page */
+}
+.button.page-link {
+  background-color: #007bff;
+}

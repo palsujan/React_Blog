@@ -7,6 +7,11 @@ const Blog = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    //Pagination states
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postPerPage] = useState(6);
+
     useEffect(()=>{
         const fetchPost = async () =>{
             try{
@@ -25,17 +30,34 @@ const Blog = () => {
         }
         fetchPost();
     },[]);
+
+    //Get current posts for the page
+
+    const indexOfLastPost = currentPage * postPerPage;
+    const indexOfFirstPost = indexOfLastPost - postPerPage;
+    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+    //change Page 
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
     if(loading)return <div>Loading.......</div>
     if(error) return <div>{error}</div>
   return (
     <div >
         <h1>Blog Post</h1>
         <div className='card-container'>
-            {posts.map((post)=>(
+            {currentPosts.map((post)=>(
                 <Post key={post.id} title={post.title} content ={post.body}/>
             ))}
         </div>
-        <Pagination/>
+        <Pagination
+            postPerPage={postPerPage}
+            totalpost = {posts.length}
+            currentPage = {currentPage}
+            paginate = {paginate}
+        
+        />
         
     </div>
   )

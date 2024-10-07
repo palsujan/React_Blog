@@ -1,0 +1,13 @@
+.shimmer-wapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.shimmer-card{
+    background-color: #f6f7f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    flex: 1 0 calc(3333.333% - 20px);
+}
